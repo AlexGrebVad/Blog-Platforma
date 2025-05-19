@@ -4,10 +4,10 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { RootState } from '@/stores/store'
+
 import useSetUserProfileValues from '@/utils/setUserProfileValues'
 import { addFullArticleInformation } from '@/stores/reducers/fullArticleInformationReducer'
 import { getArticleBySlug } from '@/api/getArticleBySlug'
-import { switchLoadingStatus } from '@/stores/reducers/articleReducer'
 import ReactMarkdown from 'react-markdown'
 import { format } from 'date-fns'
 import { addLike, deleteLike } from '@/api/likeArticleApi'
@@ -18,12 +18,10 @@ import './articlePage.css'
 
 function ArticlePage() {
 	const dispatch = useDispatch()
+
+	const [loading, setLoading] = useState(true)
 	const { slug } = useParams<{ slug: string }>()
 	const { token } = useSelector((state: RootState) => state.userProfileSlice)
-
-	const { loading } = useSelector((state: RootState) => ({
-		loading: state.articlesSlice.loading,
-	}))
 
 	const setUserValue = useSetUserProfileValues()
 
@@ -58,10 +56,10 @@ function ArticlePage() {
 
 	useEffect(() => {
 		if (!slug) return
-		dispatch(switchLoadingStatus())
+
 		getArticleBySlug(slug, token).then((res) => {
 			dispatch(addFullArticleInformation(res.article))
-			dispatch(switchLoadingStatus())
+			setLoading(false)
 		})
 	}, [slug, dispatch, token])
 
