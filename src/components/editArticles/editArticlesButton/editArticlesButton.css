@@ -1,0 +1,23 @@
+.editArticleBlock {
+	width: fit-content;
+	margin-right: 14px;
+}
+.editButton {
+	width: 66px;
+	border: 1px solid rgb(82, 196, 26);
+	border-radius: 5px;
+
+	color: rgb(82, 196, 26);
+	font-family: Inter;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 22px;
+	letter-spacing: 0px;
+	text-align: left;
+}
+
+.editButton:hover {
+	opacity: 0.8;
+	border-color: #52c41a !important;
+	color: #52c41a !important;
+}

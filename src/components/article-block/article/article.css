@@ -1,0 +1,114 @@
+#root {
+	background: rgb(235, 238, 243);
+	padding-bottom: 50px;
+}
+.article-wrapper {
+	display: flex;
+	max-width: 1000px;
+	margin: 0 auto;
+	background: rgb(255, 255, 255);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	margin-bottom: 26px;
+}
+.article-text-wrapper {
+	display: flex;
+	flex-direction: column;
+	margin-right: 85px;
+	margin-bottom: 24px;
+}
+
+.title-likes-wrapper {
+	display: flex;
+	align-items: center;
+	margin: 15px 13px 4px 19px;
+
+	font-family: Inter;
+	letter-spacing: 0px;
+	text-align: left;
+}
+
+.title-header {
+	text-decoration: none;
+	color: rgb(24, 144, 255);
+	font-size: 20px;
+	line-height: 28px;
+	font-weight: 400;
+	margin: 0px;
+	color: rgb(24, 144, 255);
+	font-family: Inter;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 28px;
+	letter-spacing: 0%;
+	text-align: left;
+}
+.likeImg {
+	margin-left: 13px;
+	cursor: pointer;
+}
+.like-count {
+	margin-left: 5px;
+	color: rgba(0, 0, 0, 0.75);
+	font-size: 12px;
+	line-height: 22px;
+}
+
+.tags {
+	width: fit-content;
+	margin-left: 19px;
+}
+.tags ul {
+	display: flex;
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+.tags li {
+	margin-right: 8px;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	border-radius: 2px;
+	padding: 2px 6px 3px 5px;
+}
+
+.article-text {
+	margin: 4px 0 0 19px;
+}
+
+.article-user {
+	display: flex;
+	gap: 12px;
+	margin: 15px 15px 0 auto;
+}
+.Name-and-data {
+}
+.user-name {
+	margin: 0px;
+	white-space: nowrap;
+	color: rgba(0, 0, 0, 0.85);
+	font-family: Inter;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 28px;
+	letter-spacing: 0%;
+	text-align: left;
+}
+.user-data {
+	margin: 0px;
+	white-space: nowrap;
+	color: rgba(0, 0, 0, 0.5);
+	font-family: Inter;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 22px;
+	letter-spacing: 0px;
+	text-align: left;
+}
+.avatar {
+	width: 4;
+	margin: 0px;
+}
+
+.avatar img {
+	width: 46px;
+	height: 46px;
+}

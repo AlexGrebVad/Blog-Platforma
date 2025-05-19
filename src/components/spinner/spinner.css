@@ -1,0 +1,26 @@
+.custom-spin-container {
+	position: static;
+	margin-top: 150px;
+	display: flex;
+	justify-content: center;
+
+	background: rgba(0, 0, 0, 0.05);
+	z-index: 1000;
+	font-size: 500px;
+}
+
+.custom-spin-container .ant-spin {
+	transform: scale(5);
+}
+
+.custom-spin-container .ant-spin-dot {
+	top: -200;
+	width: 50px;
+	height: 50px;
+}
+
+.custom-spin-container .ant-spin-dot-item {
+	top: -200;
+	width: 25px;
+	height: 25px;
+}

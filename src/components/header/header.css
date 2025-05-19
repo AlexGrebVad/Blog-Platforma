@@ -1,0 +1,96 @@
+.header {
+	max-width: 1440px;
+	height: 80px;
+	display: flex;
+	margin: 0 auto;
+	background: #fff;
+	align-items: center;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 28px;
+	letter-spacing: 0%;
+	text-align: left;
+}
+
+.header__point1 {
+	margin-left: 22px;
+}
+
+.header__point1:hover {
+	font-weight: 700;
+	font-size: 20px;
+	transition: 0.25s;
+}
+
+.userInfo {
+	display: flex;
+	align-items: center;
+	margin-right: 27px;
+}
+
+.userInfo:hover {
+	background-color: #ebeef3;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+.userName {
+	color: rgba(0, 0, 0, 0.85);
+	margin-right: 13px;
+	font-family: Inter;
+	font-size: 18px;
+	line-height: 28px;
+	letter-spacing: 0%;
+	text-align: left;
+}
+.userAvatar {
+	width: 46px;
+	height: 46px;
+	border-radius: 50%;
+}
+.header__point2 {
+	margin-right: 19px;
+}
+
+.header__point3 {
+	margin-right: 22px;
+	padding: 6px 18px 10px 18px;
+	border: 1px solid rgb(82, 196, 26);
+	border-radius: 5px;
+	color: rgb(82, 196, 26);
+	color: rgba(0, 0, 0, 0.75);
+	font-family: Inter;
+	font-size: 18px;
+	line-height: 28px;
+	cursor: pointer;
+}
+.header__point_logOut {
+	background-color: white;
+	border: 1px solid black;
+}
+.header__point_logOut:hover {
+	background-color: #ebeef3;
+}
+
+.signIn {
+	margin-left: auto;
+}
+.createArticle {
+	box-sizing: border-box;
+	padding: 6px 10px 5px 10px;
+	height: 31px;
+	font-family: Inter;
+	font-size: 14px;
+	line-height: 18px;
+	margin-left: auto;
+}
+
+.createArticle:hover {
+	box-sizing: border-box;
+	border: 2px solid rgb(82, 196, 26);
+	font-size: 19px;
+	transition: 0.5s;
+}
+
+.hidden {
+	display: none;
+}

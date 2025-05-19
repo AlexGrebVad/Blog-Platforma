@@ -1,0 +1,60 @@
+.fullArticleWrapper {
+	background: white;
+	margin: 24px auto 20px auto;
+	max-width: 1000px;
+}
+
+.header-wrapper {
+	display: flex;
+	padding: 17px 0 0 19px;
+}
+
+.headerLikesTagsWrapper {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.full-article-user {
+	margin-top: 0px;
+	margin-right: 0px;
+}
+
+.likeImg {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.full-article-tags {
+	flex-basis: 100%;
+	margin-left: auto;
+}
+
+.avatar-logo {
+	border-radius: 50%;
+	margin-right: 14px;
+}
+
+.titleEditBlock {
+	display: flex;
+	align-items: center;
+	margin: 22px 0 0 19px;
+}
+
+.article-description {
+	max-width: 650px;
+	margin: 0;
+}
+
+.markdown-block-text {
+	margin-left: 19px;
+	overflow: hidden;
+}
+
+.markdown-block {
+	border-bottom: 17px solid #ebeef3;
+}
+.like-count {
+	font-family: Inter;
+	letter-spacing: 0px;
+	text-align: left;
+}

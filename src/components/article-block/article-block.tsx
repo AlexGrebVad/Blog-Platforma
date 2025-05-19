@@ -1,0 +1,84 @@
+import { Pagination } from 'antd'
+
+import { useDispatch, useSelector } from 'react-redux'
+import {
+	addArticles,
+	addArticlesFailed,
+	setCurrentPage,
+	setTotalArticles,
+	setLoadingTrue,
+} from '@/stores/reducers/articleReducer'
+
+import { RootState } from '@/stores/store'
+
+import useSetUserProfileValues from '@/utils/setUserProfileValues'
+import fetchArticles from '@/api/articleApi'
+import React, { useEffect } from 'react'
+import Article from './article/article'
+import Spinner from '../spinner/spinner'
+import ErrorBlock from '../errorBlock/errorBlock'
+import './article-block.css'
+
+function ArticleBlock() {
+	const setUserValue = useSetUserProfileValues()
+	const dispatch = useDispatch()
+	const { token } = useSelector((state: RootState) => state.userProfileSlice)
+
+	const { articles, currentPage, totalArticles, loading, err } = useSelector(
+		(state: RootState) => ({
+			articles: state.articlesSlice.articles,
+			currentPage: state.articlesSlice.currentPage,
+			totalArticles: state.articlesSlice.totalArticles,
+			loading: state.articlesSlice.loading,
+			err: state.articlesSlice.err,
+			isUserLoginedSwitch: state.headerSlice.isUserLoginedSwitch,
+		}),
+	)
+
+	useEffect(() => {
+		setUserValue()
+	}, [setUserValue])
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				dispatch(setLoadingTrue())
+				const data = await fetchArticles(currentPage, token)
+
+				dispatch(addArticles(data.articles))
+				dispatch(setTotalArticles(data.articlesCount))
+			} catch (error) {
+				dispatch(addArticlesFailed())
+			}
+		}
+		fetchData()
+	}, [dispatch, currentPage, token])
+
+	return (
+		<main className="main-titles">
+			<div className="article-block">
+				{loading && !err && <Spinner />}
+				{!loading && err && <ErrorBlock />}
+				{!loading &&
+					!err &&
+					articles.map((elem) => {
+						return <Article key={elem.author.image + elem.createdAt} articleInformation={elem} />
+					})}
+			</div>
+
+			<div className="pagination">
+				{!loading && !err && (
+					<Pagination
+						current={currentPage}
+						total={totalArticles}
+						pageSize={5}
+						onChange={(page) => dispatch(setCurrentPage(page))}
+						showSizeChanger={false}
+					/>
+				)}
+			</div>
+		</main>
+	)
+}
+
+export default ArticleBlock

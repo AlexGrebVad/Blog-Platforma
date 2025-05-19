@@ -1,0 +1,42 @@
+.main-titles {
+	margin-top: 26px;
+	background: rgb(235, 238, 243);
+}
+.pagination {
+	width: fit-content;
+	margin: 0 auto;
+	padding-bottom: 15px;
+}
+
+/* Убираем фон у всех элементов пагинации */
+.ant-pagination .ant-pagination-item,
+.ant-pagination .ant-pagination-prev,
+.ant-pagination .ant-pagination-next,
+.ant-pagination .ant-pagination-jump-prev,
+.ant-pagination .ant-pagination-jump-next {
+	background: transparent;
+	color: white !important;
+}
+
+/* Стиль при наведении */
+.ant-pagination .ant-pagination-item:hover,
+.ant-pagination .ant-pagination-prev:hover,
+.ant-pagination .ant-pagination-next:hover,
+.ant-pagination .ant-pagination-jump-prev:hover,
+.ant-pagination .ant-pagination-jump-next:hover {
+	color: white !important;
+	background: #f0f0f0 !important;
+	border-color: #d9d9d9;
+}
+
+/* Активная страница (после нажатия) */
+.ant-pagination .ant-pagination-item.ant-pagination-item-active {
+	background: rgb(24, 144, 255) !important;
+	/* color: white !important; */
+	border-color: rgb(24, 144, 255) !important;
+}
+
+/* Цвет текста активного пункта */
+.ant-pagination-item-active a {
+	color: white !important;
+}
