@@ -24,16 +24,11 @@ function ArticleBlock() {
 	const dispatch = useDispatch()
 	const { token } = useSelector((state: RootState) => state.userProfileSlice)
 
-	const { articles, currentPage, totalArticles, loading, err } = useSelector(
-		(state: RootState) => ({
-			articles: state.articlesSlice.articles,
-			currentPage: state.articlesSlice.currentPage,
-			totalArticles: state.articlesSlice.totalArticles,
-			loading: state.articlesSlice.loading,
-			err: state.articlesSlice.err,
-			isUserLoginedSwitch: state.headerSlice.isUserLoginedSwitch,
-		}),
-	)
+	const articles = useSelector((state: RootState) => state.articlesSlice.articles)
+	const currentPage = useSelector((state: RootState) => state.articlesSlice.currentPage)
+	const totalArticles = useSelector((state: RootState) => state.articlesSlice.totalArticles)
+	const loading = useSelector((state: RootState) => state.articlesSlice.loading)
+	const err = useSelector((state: RootState) => state.articlesSlice.err)
 
 	useEffect(() => {
 		setUserValue()
