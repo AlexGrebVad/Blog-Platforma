@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { registerUser } from '@/api/signUpApi'
 import './signUp.css'
 
@@ -15,6 +15,7 @@ interface UserData {
 
 const SignUp = () => {
 	const [successRegistration, setSuccessRegistration] = useState('')
+	const navigate = useNavigate()
 
 	const {
 		register,
@@ -27,8 +28,8 @@ const SignUp = () => {
 	const onSubmit = async (data: UserData) => {
 		try {
 			registerUser(data)
-
 			setSuccessRegistration('true')
+			navigate('/')
 		} catch (error) {
 			if (error.errors.email) {
 				setSuccessRegistration('')

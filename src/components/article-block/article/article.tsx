@@ -22,6 +22,7 @@ const Article = ({ articleInformation }: ArticleProps) => {
 	const [likedCount, setLikedCount] = useState(articleInformation.favoritesCount)
 
 	function likeAndDislikeSwitch() {
+		if (!token) return
 		if (likedStatus) {
 			deleteLike(articleInformation.slug, token)
 		} else {

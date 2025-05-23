@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import { tokenChanger } from '@/stores/reducers/userProfileInformationReducer'
 import { succesLoginHeaderChanger } from '@/stores/reducers/headerReducer'
 import './header.css'
 import { RootState } from '@/stores/store'
@@ -31,6 +32,7 @@ function Header() {
 		navigate('/')
 		dispatch(succesLoginHeaderChanger())
 		localStorage.clear()
+		dispatch(tokenChanger(0))
 	}
 
 	return (
