@@ -1,24 +1,24 @@
-// вне компонента, чтобы сохранялось между переходами
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+// // вне компонента, чтобы сохранялось между переходами
+// import { useEffect } from 'react'
+// import { useNavigate } from 'react-router-dom'
 
-let alreadyRedirected = false
+// let alreadyRedirected = false
 
-function AppRedirector() {
-	const navigate = useNavigate()
+// function AppRedirector() {
+// 	const navigate = useNavigate()
 
-	useEffect(() => {
-		const isPageReload =
-			performance?.navigation?.type === 1 ||
-			performance?.getEntriesByType?.('navigation')?.[0]?.type === 'reload'
+// 	useEffect(() => {
+// 		const isPageReload =
+// 			performance?.navigation?.type === 1 ||
+// 			performance?.getEntriesByType?.('navigation')?.[0]?.type === 'reload'
 
-		if (isPageReload && !alreadyRedirected) {
-			alreadyRedirected = true
-			navigate('/', { replace: true })
-		}
-	}, [navigate])
+// 		if (isPageReload && !alreadyRedirected) {
+// 			alreadyRedirected = true
+// 			navigate('/', { replace: true })
+// 		}
+// 	}, [navigate])
 
-	return null
-}
+// 	return null
+// }
 
-export default AppRedirector
+// export default AppRedirector

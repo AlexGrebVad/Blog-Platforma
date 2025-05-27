@@ -2,7 +2,6 @@ import { useState, useEffect, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Article } from '@/types/apiTypes'
 import editArticle from '@/api/editArticleApi'
 import useSetUserProfileValues from '@/utils/setUserProfileValues'
 
@@ -15,18 +14,24 @@ interface ArticleData {
 
 const EditArticlesPage = () => {
 	const setUserValue = useSetUserProfileValues()
-
 	const { token } = useSelector((state: RootState) => state.userProfileSlice)
-	const { articles } = useSelector((state: RootState) => state.articlesSlice)
 	const { slug = '' } = useParams()
+
+	const initialArticleData = useMemo(() => {
+		const storedArticle = localStorage.getItem('article')
+		return storedArticle
+			? JSON.parse(storedArticle)
+			: {
+					title: '',
+					description: '',
+					body: '',
+					tagList: [],
+				}
+	}, [])
 
 	const [successMessage, setSuccessMessage] = useState('')
 	const [unSuccessMessage, setUnSuccessMessage] = useState('')
 	const [currentTag, setCurrentTag] = useState('')
-
-	const articleInformation = useMemo(() => {
-		return articles.find((elem: Article) => elem.slug === slug) || ({} as Article)
-	}, [articles, slug])
 
 	const {
 		register,
@@ -35,22 +40,21 @@ const EditArticlesPage = () => {
 		watch,
 		formState: { errors },
 	} = useForm<ArticleData>({
-		defaultValues: {
-			title: articleInformation.title,
-			description: articleInformation.description,
-			body: articleInformation.body,
-			tagList: articleInformation.tagList || [],
-		},
+		defaultValues: initialArticleData,
 	})
 
 	const tags = watch('tagList') || []
 
 	useEffect(() => {
-		setValue('title', articleInformation.title)
-		setValue('description', articleInformation.description)
-		setValue('body', articleInformation.body)
-		setValue('tagList', articleInformation.tagList || [])
-	}, [articleInformation, setValue])
+		setValue('title', initialArticleData.title)
+		setValue('description', initialArticleData.description)
+		setValue('body', initialArticleData.body)
+		setValue('tagList', initialArticleData.tagList || [])
+	}, [setValue, initialArticleData])
+
+	useEffect(() => {
+		setUserValue()
+	}, [setUserValue])
 
 	const addTag = () => {
 		if (currentTag.trim() && !tags.includes(currentTag.trim())) {
@@ -64,10 +68,6 @@ const EditArticlesPage = () => {
 		const newTags = tags.filter((tag) => tag !== tagToRemove)
 		setValue('tagList', newTags)
 	}
-
-	useEffect(() => {
-		setUserValue()
-	}, [setUserValue])
 
 	const onSubmit = async (data: ArticleData) => {
 		try {

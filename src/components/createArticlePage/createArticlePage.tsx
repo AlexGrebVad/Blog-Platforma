@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 import createArticle from '@/api/createArticleApi'
 import { useSelector } from 'react-redux'
@@ -18,6 +19,8 @@ const CreateArticlePage = () => {
 	const { token } = useSelector((state: RootState) => state.userProfileSlice)
 
 	const setUserValue = useSetUserProfileValues()
+
+	const navigate = useNavigate()
 
 	const [successMessage, setSuccessMessage] = useState('')
 	const [unSuccessMessage, setUnSuccessMessage] = useState('')
@@ -42,6 +45,7 @@ const CreateArticlePage = () => {
 			if (response) {
 				setSuccessMessage('The article was created successfully!')
 				setUnSuccessMessage('')
+				navigate('/')
 			}
 		} catch (error) {
 			setUnSuccessMessage('Ошибка при создании статьи')

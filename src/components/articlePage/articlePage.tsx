@@ -116,7 +116,12 @@ function ArticlePage() {
 					<div className="titleEditBlock">
 						<p className="article-text article-description">{articleInformation.description}</p>
 						{userConfirmed && <DeleteArticle slug={articleInformation.slug} />}
-						{userConfirmed && <EditArticleButton slug={articleInformation.slug} />}
+						{userConfirmed && (
+							<EditArticleButton
+								slug={articleInformation.slug}
+								articleInformation={articleInformation}
+							/>
+						)}
 					</div>
 
 					<div className="markdown-block">

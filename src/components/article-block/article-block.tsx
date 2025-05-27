@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
 	addArticles,
 	addArticlesFailed,
-	setCurrentPage,
 	setTotalArticles,
 	setLoadingTrue,
 } from '@/stores/reducers/articleReducer'
@@ -13,7 +12,7 @@ import { RootState } from '@/stores/store'
 
 import useSetUserProfileValues from '@/utils/setUserProfileValues'
 import fetchArticles from '@/api/articleApi'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Article from './article/article'
 import Spinner from '../spinner/spinner'
 import ErrorBlock from '../errorBlock/errorBlock'
@@ -24,8 +23,10 @@ function ArticleBlock() {
 	const dispatch = useDispatch()
 	const { token } = useSelector((state: RootState) => state.userProfileSlice)
 
+	const [currentPage, setCurrentPage] = useState(Number(localStorage.getItem('page')))
+
 	const articles = useSelector((state: RootState) => state.articlesSlice.articles)
-	const currentPage = useSelector((state: RootState) => state.articlesSlice.currentPage)
+
 	const totalArticles = useSelector((state: RootState) => state.articlesSlice.totalArticles)
 	const loading = useSelector((state: RootState) => state.articlesSlice.loading)
 	const err = useSelector((state: RootState) => state.articlesSlice.err)
@@ -67,7 +68,10 @@ function ArticleBlock() {
 						current={currentPage}
 						total={totalArticles}
 						pageSize={5}
-						onChange={(page) => dispatch(setCurrentPage(page))}
+						onChange={(page) => {
+							localStorage.setItem('page', page.toString())
+							setCurrentPage(page)
+						}}
 						showSizeChanger={false}
 					/>
 				)}
