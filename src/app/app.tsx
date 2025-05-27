@@ -6,7 +6,7 @@ import ArticlePage from '@/components/articlePage/articlePage'
 import SignUp from '@/components/signUp/signUp'
 import SignIn from '@/components/signIn/signIn'
 import EditProfile from '@/components/editProfile/editProfile'
-import AppRedirector from '@/components/appRedirector/appRedirector'
+
 import CreateArticlePage from '@/components/createArticlePage/createArticlePage'
 import { Provider } from 'react-redux'
 import EditArticlesPage from '@/components/editArticles/editArticlesPage/editArticlesPage'
@@ -18,7 +18,7 @@ function App() {
 	return (
 		<Provider store={store}>
 			<BrowserRouter>
-				<AppRedirector />
+				
 				<Header />
 				<Routes>
 					<Route path="/" element={<ArticleBlock />} />
