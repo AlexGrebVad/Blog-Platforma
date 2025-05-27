@@ -23,7 +23,10 @@ function ArticleBlock() {
 	const dispatch = useDispatch()
 	const { token } = useSelector((state: RootState) => state.userProfileSlice)
 
-	const [currentPage, setCurrentPage] = useState(Number(localStorage.getItem('page')))
+	const [currentPage, setCurrentPage] = useState(() => {
+		const actualPage = localStorage.getItem('page')
+		return actualPage ? parseInt(actualPage, 10) : 1
+	})
 
 	const articles = useSelector((state: RootState) => state.articlesSlice.articles)
 
